@@ -1,11 +1,14 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+def test():
+	print "Hello,this is list operator class that prepare for snake's body."
+
 class Node(object):
-    def __init__(self,x,y,dir,p=0):
+    def __init__(self,x,y,p=0):
         self.cur_x = x
         self.cur_y = y
-        self.cur_dir = dir
+        # self.cur_dir = dir
         self.next = p
 
 class LinkList(object):
@@ -27,7 +30,7 @@ class LinkList(object):
 
 
 
-    def __setitem__(self, key, x, y, dir):
+    def __setitem__(self, key, item):
 
         if self.is_empty():
             print 'linklist is empty.'
@@ -43,12 +46,12 @@ class LinkList(object):
 
     def initlist(self,data):
 
-        self.head = Node(data[0])
+        self.head = Node(data[0].cur_x,data[0].cur_y)
 
         p = self.head
 
         for i in data[1:]:
-            node = Node(i)
+            node = Node(i.cur_x,i.cur_y)
             p.next = node
             p = p.next
 
@@ -76,7 +79,7 @@ class LinkList(object):
 
     def append(self,item):
 
-        q = Node(item)
+        q = Node(item.cur_x,item.cur_y)
         if self.head ==0:
             self.head = q
         else:
@@ -112,7 +115,7 @@ class LinkList(object):
             return
 
         if index ==0:
-            q = Node(item,self.head)
+            q = Node(item.x,item.y,self.head)
 
             self.head = q
 
@@ -125,7 +128,7 @@ class LinkList(object):
             j+=1
 
         if index ==j:
-            q = Node(item,p)
+            q = Node(item.x,item.y,item.dir,p)
             post.next = q
             q.next = p
 
@@ -137,7 +140,7 @@ class LinkList(object):
             return
 
         if index ==0:
-            q = Node(item,self.head)
+            q = Node(item.x,item.y,item.dir,self.head)
 
             self.head = q
 
@@ -160,7 +163,7 @@ class LinkList(object):
 
         p = self.head
         i = 0
-        while p.next!=0 and not p.x ==value:
+        while p.next!=0 and not p.x == value:
             p = p.next
             i+=1
 
