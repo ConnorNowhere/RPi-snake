@@ -14,9 +14,11 @@ import Adafruit_SSD1306
 import Image
 import ImageDraw
 import ImageFont
+import random
 
 import RPi.GPIO as GPIO
-__snakeDir__ = 12
+
+__snakeDir__ = random.randint(1,4)*3
 __snakeHeadX__ = 62
 __snakeHeadY__ = 30
 
